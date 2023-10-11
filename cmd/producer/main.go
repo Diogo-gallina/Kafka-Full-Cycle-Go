@@ -7,6 +7,8 @@ import (
 
 func main()  {
   producer := NewKafkaProducer()
+  Publish("mensagem", "teste", producer, nil)
+  producer.Flush(1000)
 }
 
 func NewKafkaProducer() *kafka.Producer {
