@@ -19,3 +19,16 @@ func NewKafkaProducer() *kafka.Producer {
   }
   return p
 }
+
+func Publish(msg string, topic string, producer *kafka.Producer, key []byte) error {
+  message := &kafka.Message{
+	Value: []byte(msg),
+	TopicPartition: kafka.TopicPartition{Topic: &topic, Partition: kafka.PartitionAny},
+	Key: key,
+  }
+  err := producer.Produce(message, nil)
+  if err != nil {
+	return err
+  }
+  return nil
+}
