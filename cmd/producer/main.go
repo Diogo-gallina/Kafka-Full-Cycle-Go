@@ -12,7 +12,7 @@ func main() {
   Publish("transferiu", "teste", producer, []byte("transferencia3"), deliveryChan)
   go DeliveryReport(deliveryChan)
 
-  producer.Flush(4000)
+  producer.Flush(5000)
 }
 
 func NewKafkaProducer() *kafka.Producer {
