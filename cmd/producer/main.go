@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-func main()  {
+func main() {
   deliveryChan := make(chan kafka.Event)
   producer := NewKafkaProducer()
   Publish("transferiu", "teste", producer, []byte("transferencia3"), deliveryChan)
